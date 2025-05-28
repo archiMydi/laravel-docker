@@ -21,7 +21,6 @@ jobs:
           mkdir -p ~/.ssh
           echo "${{ secrets.LARAVEL_DEPLOY_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -H cours-infra.archibald-venzal.mds-vannes.yt >> ~/.ssh/known_hosts
 
       - name: Run Ansible Playbook
         run: |
