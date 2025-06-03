@@ -1,4 +1,5 @@
 - hosts: vps
+  gather_facts: no
   tasks:
     - name: Pull la dernière version du dépôt
       git:
