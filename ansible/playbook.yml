@@ -1,21 +1,18 @@
----
 - hosts: vps
-  become: yes
   tasks:
     - name: Pull la dernière version du dépôt
       git:
         repo: "git@github.com:archiMydi/laravel-docker.git"
-        dest: /var/www/cours-infra
+        dest: /home/xjeypbqy/www/cours-infra
         version: main
         force: yes
 
     - name: Installer les dépendances PHP
-      composer:
-        command: install
-        working_dir: /var/www/cours-infra
-        prefer_dist: yes
+      command: composer install --prefer-dist
+      args:
+        chdir: /home/xjeypbqy/www/cours-infra
 
     - name: Lancer les migrations
       command: php artisan migrate --force
       args:
-        chdir: /var/www/cours-infra
+        chdir: /home/xjeypbqy/www/cours-infra
